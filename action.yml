@@ -1,0 +1,42 @@
+name: 'AliYun FUN'
+description: 'Setup AliYun fun command line tool, add it to the PATH and configure authentication'
+author: 'hugh.li'
+inputs:
+  account_id:
+    required: true
+    description: 'AliYun Account ID'
+  access_key_id:
+    required: true
+    description: 'AliYun Access Key ID'
+  access_key_secret:
+    required: true
+    description: 'AliYun Access Key Secret'
+  fun-version:
+    required: false
+    description: 'Version of fun'
+  default_region:
+    required: false
+    description: 'Default region name'
+  region:
+    required: false
+    description: 'region name'
+  timeout:
+    required: false
+    description: 'The timeout in seconds for each SDK client invoking'
+  retries:
+    required: false
+    description: 'The maximum number of retries for each SDK client'
+  fc_endpoint:
+    required: false
+    description: 'use `--sts-token <StsToken>` to assign StsToken'
+  enable_custom_endpoint:
+    required: false
+    description: 'Use custom endpoint'
+
+runs:
+  using: 'node12'
+  main: 'index.js'
+
+branding:
+  icon: 'cloud-lightning'
+  color: 'orange'
