@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Aliyun CLI
+      - name: Setup Aliyun Fun
         uses: ./
         with:
           account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
