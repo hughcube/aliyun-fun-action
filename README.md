@@ -18,12 +18,17 @@ Action steps.
 ```yaml
 steps:
 - uses: actions/checkout@v1
-- uses: hughcube/aliyun-fun-action
-  with:
-    account_id: ${{ secrets.ALIYUN_ACCOUNT_ID }}
-    access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-    access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-- run: fun deploy
+- uses: hughcube/aliyun-fun-action@1.0.0
+- name: Deploy to Fun
+  env:
+    REGION: cn-shenzhen
+    ACCOUNT_ID: ${{ secrets.ALIYUN_FUN_ACCOUNT_ID }}
+    ACCESS_KEY_ID: ${{ secrets.ALIYUN_FUN_ACCESS_KEY_ID }}
+    ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_FUN_ACCESS_KEY_SECRET }}
+  run: |
+    cp .fun/template.yml template.yml
+    sed -i 's#{{tag}}#${{ github.event.ref }}#' ./template.yml
+    fun deploy --assume-yes
 ```
 
 ## License
